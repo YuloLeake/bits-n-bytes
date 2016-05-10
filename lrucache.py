@@ -1,4 +1,29 @@
-''' Written by Yulo Leake for coding exercise interview. '''
+'''
+Written by Yulo Leake on April 30th, 2016, for coding exercise interview..
+
+USAGE:
+    python cache.py
+
+ASSUMPTIONS:
+    1) Trying to set the cache size to less than 1 will print "ERROR", since that doesn't make any sense.
+    2) Both GET and SET of existing item will count towards it being used and updates the order in cache.
+
+LIMITATIONS:
+    1) When reading user inputs, it is case SENSITIVE (i.e. "SET" != "set").
+    2) It does NOT support key or values that contains spaces (i.e. "SET key value with space" will print an error ).
+    3) The LRUCache class itself does not make sure that given size is actually a positive integer that is not zero.
+        a) The main function takes care of it, BUT it's implemented outside of the actual LRUCache class.
+        b) Was going to do it, but ran out of time (and forgot until the end).
+    4) Both key and value are treated as string
+
+TESTING:
+    Program was tested by manual input / copy and paste (I didn't have time to implement a full unit test).
+    Was tested for:
+        1) Inputting invalid argument and argument length.
+        2) Writing a function to keep track of the items in the cache.
+        3) Making sure the cache was updating at SET and GET.
+    Was tested on OS X El Capitan with Python 2.7.5
+'''
 
 class LRUCache(object):
     ''' Least Recently Used Cache implemented using dictionary and Doubly Linked List.
