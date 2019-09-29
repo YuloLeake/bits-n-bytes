@@ -30,7 +30,19 @@ def fetch_stock_price(
 
 
 if __name__ == '__main__':
-    ticker = 'AMZN'
+    import argparse
+
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument('-t', '--ticker', required=True, help='Ticker symbol.')
+    ap.add_argument('-s', '--start', required=False, help='Start time.')
+    ap.add_argument('-e', '--end', required=False, help='End time.')
+
+    args = ap.parse_args()
+
+    print(args)
+
+    ticker = args.ticker
     start  = 946684800
     end    = 9999999999
 
