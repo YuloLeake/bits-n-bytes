@@ -1,0 +1,250 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "My own API",
+    "version": "v0.0.1"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "pong"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/pets": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/produce": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produce"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Produce": {
+        "properties": {
+          "fruits": {
+            "items": {
+              "type": "string",
+              "title": "A Schema",
+              "examples": [
+                "apple",
+                "orange"
+              ]
+            },
+            "type": "array",
+            "title": "The fruits Schema",
+            "default": [],
+            "examples": [
+              [
+                "apple",
+                "orange"
+              ]
+            ]
+          },
+          "vegetables": {
+            "items": {
+              "properties": {
+                "veggieName": {
+                  "type": "string",
+                  "title": "The veggieName Schema",
+                  "examples": [
+                    "tomato",
+                    "eggplant"
+                  ]
+                },
+                "veggieLike": {
+                  "type": "boolean",
+                  "title": "The veggieLike Schema",
+                  "examples": [
+                    true,
+                    false
+                  ]
+                }
+              },
+              "type": "object",
+              "required": [
+                "veggieName",
+                "veggieLike"
+              ],
+              "title": "A Schema",
+              "examples": [
+                {
+                  "veggieName": "tomato",
+                  "veggieLike": true
+                },
+                {
+                  "veggieName": "eggplant",
+                  "veggieLike": false
+                }
+              ]
+            },
+            "type": "array",
+            "title": "The vegetables Schema",
+            "default": [],
+            "examples": [
+              [
+                {
+                  "veggieName": "tomato",
+                  "veggieLike": true
+                },
+                {
+                  "veggieName": "eggplant",
+                  "veggieLike": false
+                }
+              ]
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "fruits",
+          "vegetables"
+        ],
+        "title": "Root Schema",
+        "default": {},
+        "examples": [
+          {
+            "fruits": [
+              "apple",
+              "orange"
+            ],
+            "vegetables": [
+              {
+                "veggieName": "tomato",
+                "veggieLike": true
+              },
+              {
+                "veggieName": "eggplant",
+                "veggieLike": false
+              }
+            ]
+          }
+        ]
+      },
+      "Category": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Category"
+      },
+      "Tag": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Tag"
+      },
+      "Pet": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "photos": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Photos"
+          },
+          "tags": {
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "type": "array",
+            "title": "Tags"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "category",
+          "photos",
+          "tags",
+          "status"
+        ],
+        "title": "Pet"
+      }
+    }
+  }
+}
