@@ -1,0 +1,9 @@
+[tool.poetry]
+authors = ["Yulo Leake"]
+description = "base application"
+name = "base-app"
+version = "1.0.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "3.0.3"
